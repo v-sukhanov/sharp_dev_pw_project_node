@@ -1,0 +1,16 @@
+{
+  "name": "sharp_dev_pw_project_node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/v-sukhanov/sharp_dev_pw_project_node.git",
+  "author": "vladimirsuhanov <vladimir.sukhanov99@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0"
+  }
+}
