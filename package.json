@@ -1,6 +1,9 @@
 {
   "name": "sharp_dev_pw_project_node",
   "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "main": "index.js",
   "repository": "https://github.com/v-sukhanov/sharp_dev_pw_project_node.git",
   "author": "vladimirsuhanov <vladimir.sukhanov99@gmail.com>",
