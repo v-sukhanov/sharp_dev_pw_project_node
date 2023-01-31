@@ -2,8 +2,7 @@ const {Router} = require('express')
 const {check, validationResult} = require('express-validator')
 const router = Router()
 const User = require('../models/User')
-const AccessToken = require('../models/Token')
-const crypto = require('crypto');
+const jwt = require('jsonwebtoken')
 
 router.post('/signup',
     [
@@ -54,14 +53,17 @@ router.post('/signin',
             if (!user || !user.checkPassword(password)) {
                 return res.status(400).json({errors: ['The email or password is incorrect']})
             }
-            const token = crypto.randomBytes(32).toString('base64');
-            console.log(user.userId)
-            const newAccessToken = new AccessToken({
-                token,
-                userId: user.userId.toString()
+            const token = jwt.sign(
+                { user_id: user.id,  },
+                process.env.TOKEN_KEY,
+                {
+                    expiresIn: "2h",
+                }
+            );
+
+            res.status(200).json({
+                token
             })
-            await newAccessToken.save();
-            res.status(200).json({})
         } catch (e) {
             console.log(e)
             return res.status(400).json({errors: ['Bad request']})
