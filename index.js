@@ -3,11 +3,7 @@ const mongoose = require("mongoose");
 const passport = require('passport');
 const User = require('./models/User')
 const {Strategy: JwtStrategy, ExtractJwt} = require('passport-jwt')
-
 require('dotenv').config();
-
-
-
 
 const app = express();
 
@@ -17,7 +13,7 @@ const adjustExpressMiddleware = () => {
     opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
     opts.secretOrKey = process.env.TOKEN_KEY;
     passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
-        User.findOne({id: jwt_payload.user_id}, function(err, user) {
+        User.findOne({_id: jwt_payload.user_id}, function(err, user) {
             if (err) {
                 return done(err, false);
             }

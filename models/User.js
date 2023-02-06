@@ -23,6 +23,10 @@ const User = new Schema({
     created: {
         type: Date,
         default: Date.now
+    },
+    balance: {
+        type: Number,
+        default: 500
     }
 });
 

@@ -54,7 +54,7 @@ router.post('/signin',
                 return res.status(400).json({errors: ['The email or password is incorrect']})
             }
             const token = jwt.sign(
-                { user_id: user.id,  },
+                {user_id: user.id,},
                 process.env.TOKEN_KEY,
                 {
                     expiresIn: "2h",
