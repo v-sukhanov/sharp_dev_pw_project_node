@@ -26,7 +26,7 @@ const adjustExpressMiddleware = () => {
     }));
     app.use(express.urlencoded({extended: true}))
     app.use('/auth', require('./routes/auth.routes'))
-    app.use('/protected', passport.authenticate('jwt', { session: false }), require('./routes/protected.router'))
+    app.use('/', passport.authenticate('jwt', { session: false }), require('./routes/protected.router'))
 }
 
 const start = async () => {
